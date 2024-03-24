@@ -21,6 +21,7 @@ func Ex01(ctx context.Context, params []string) error {
 	return addContinueDays(ctx, userID)
 }
 
+// 用户签到
 func addContinueDays(ctx context.Context, userID int64) error {
 	key := getContinueCheckKey(userID)
 	// 1. 签到天数+1
@@ -44,6 +45,7 @@ func addContinueDays(ctx context.Context, userID int64) error {
 	return nil
 }
 
+// 获取用户签到天数
 func getUserCheckInDays(ctx context.Context, userID int64) (int64, error) {
 	key := getContinueCheckKey(userID)
 	days, err := RedisCli.Get(ctx, key).Result()
@@ -65,6 +67,7 @@ func beginningOfDay() time.Time {
 	return time.Date(y, m, d, 0, 0, 0, 0, time.Local)
 }
 
+// 获取记录签到天数的key
 func getContinueCheckKey(userID int64) string {
 	return fmt.Sprintf(continueCheckKey, userID)
 }
