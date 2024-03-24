@@ -27,8 +27,8 @@ func main() {
 	switch runExample {
 	case "Ex01":
 		example.Ex01(ctx, exampleParams)
-	//case "Ex02":
-	//	example.Ex02(ctx)
+	case "Ex02":
+		example.Ex02(ctx)
 	//case "Ex03":
 	//	example.Ex03(ctx)
 	//case "Ex04":
