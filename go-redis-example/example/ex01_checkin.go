@@ -3,6 +3,7 @@ package example
 import (
 	"context"
 	"fmt"
+	"log"
 	"strconv"
 	"time"
 
@@ -39,7 +40,7 @@ func addContinueDays(ctx context.Context, userID int64) error {
 	if err != nil {
 		return err
 	}
-	fmt.Printf("User[%d]连续签到：%d天，过期时间：%s", userID, day, expAt.Format("2006-01-02 15:04:05"))
+	log.Printf("User[%d]连续签到：%d天，过期时间：%s", userID, day, expAt.Format("2006-01-02 15:04:05"))
 	return nil
 }
 
