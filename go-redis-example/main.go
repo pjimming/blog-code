@@ -31,8 +31,8 @@ func main() {
 		example.Ex02(ctx)
 	case "Ex03":
 		example.Ex03(ctx)
-	//case "Ex04":
-	//	example.Ex04(ctx)
+	case "Ex04":
+		example.Ex04(ctx)
 	//case "Ex05":
 	//	example.Ex05(ctx, exampleParams)
 	//case "Ex06":
