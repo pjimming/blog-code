@@ -35,6 +35,7 @@ func NewConcurrentRoutine(
 func (cInst *ConcurrentRoutine) Run(ctx context.Context, customParams interface{}, workFun callBack) {
 	wg := &sync.WaitGroup{}
 	for i := 0; i < cInst.routineNums; i++ {
+		mRoutine := i
 		wg.Add(1)
 		// 启动协程模拟并发逻辑
 		go func(mCtx context.Context, mRoutine int, mParams interface{}) {
@@ -46,7 +47,7 @@ func (cInst *ConcurrentRoutine) Run(ctx context.Context, customParams interface{
 					ConcurrentEventLogger: cInst.concurrentEventLogger,
 					CustomParams:          mParams,
 				})
-		}(ctx, i, customParams)
+		}(ctx, mRoutine, customParams)
 	}
 	wg.Wait()
 }
