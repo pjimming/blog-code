@@ -5,25 +5,23 @@ import (
 	"fmt"
 	"log"
 	"strconv"
-
-	"github.com/redis/go-redis/v9"
+	"time"
 )
 
 const ex07Channel = "es_ch"
 
 func Ex07(ctx context.Context) {
 	pubSub := RedisCli.Subscribe(ctx, ex07Channel)
-	defer func(mPubSub *redis.PubSub) {
-		if err := mPubSub.Unsubscribe(ctx, ex07Channel); err != nil {
-			log.Fatal(err)
-		}
-		_ = mPubSub.Close()
-	}(pubSub)
 
 	go func() {
 		for i := 0; i < 5; i++ {
 			RedisCli.Publish(ctx, ex07Channel, i)
 		}
+		time.Sleep(time.Second)
+		if err := pubSub.Unsubscribe(ctx, ex07Channel); err != nil {
+			log.Fatal(err)
+		}
+		_ = pubSub.Close()
 	}()
 
 	for msg := range pubSub.Channel() {

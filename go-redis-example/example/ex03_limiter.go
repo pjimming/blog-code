@@ -41,6 +41,7 @@ func Ex03(ctx context.Context) {
 
 	time.Sleep(1 * time.Second)
 	fmt.Printf("\n------\n下一秒请求\n------\n")
+	// 清空日志信息
 	eventLogger = common.NewConcurrentEventLog(ctx, 1000)
 	accessQueryNum = 0
 	// new一个并发执行器

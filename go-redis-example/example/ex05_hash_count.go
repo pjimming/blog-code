@@ -3,7 +3,6 @@ package example
 import (
 	"context"
 	"fmt"
-	"log"
 	"strconv"
 )
 
@@ -80,7 +79,7 @@ func Ex05InitUserCount(ctx context.Context) {
 			panic(err)
 		}
 
-		log.Printf("设置uid[%d], key=%s", uid, key)
+		fmt.Printf("设置uid[%d], key=%s\n", uid, key)
 	}
 	if _, err := pipe.Exec(ctx); err != nil {
 		// 再执行一次

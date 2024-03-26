@@ -3,7 +3,6 @@ package example
 import (
 	"context"
 	"fmt"
-	"log"
 	"strconv"
 
 	"github.com/redis/go-redis/v9"
@@ -115,7 +114,7 @@ func ex06GetOrderListByPage(ctx context.Context, page, pageSize int64) {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("榜单(page=%d, pageSize=%d)", page, pageSize)
+	fmt.Printf("榜单(page=%d, pageSize=%d)\n", page, pageSize)
 	for i, z := range resList {
 		rank := i + 1 + offset
 		fmt.Printf("第%d名 %s\t%.2f\n", rank, z.Member, z.Score)
@@ -128,7 +127,7 @@ func ex06GetUserRankByName(ctx context.Context, name string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("name=%s, rank=%d", name, rank)
+	fmt.Printf("name=%s, rank=%d\n", name, rank+1)
 }
 
 // 获取用户分数信息
@@ -137,7 +136,7 @@ func ex06GetUserScoreByName(ctx context.Context, name string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("name=%s, score=%.2f", name, score)
+	fmt.Printf("name=%s, score=%.2f\n", name, score)
 }
 
 // ex06AddUserScore 增加用户分数
@@ -146,5 +145,5 @@ func ex06AddUserScore(ctx context.Context, name string, score float64) {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("name=%s, add_score=%.2f, score=%.2f", name, score, num)
+	fmt.Printf("name=%s, add_score=%.2f, score=%.2f\n", name, score, num)
 }
