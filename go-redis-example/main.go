@@ -37,11 +37,8 @@ func main() {
 		example.Ex05(ctx, exampleParams)
 	case "Ex06":
 		example.Ex06(ctx, exampleParams)
-	//case "Ex06_2":
-	//	fmt.Printf("%v\n", exampleParams)
-	//	example.Ex06_2(ctx, exampleParams)
-	//case "Ex07":
-	//	example.Ex07(ctx)
+	case "Ex07":
+		example.Ex07(ctx)
 	default:
 		panic(fmt.Sprintf("not support type: %s", runExample))
 	}
