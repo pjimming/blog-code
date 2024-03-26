@@ -43,7 +43,10 @@ func (ceLog *ConcurrentEventLogger) PrintLogs() {
 // LogFormat 包含通用日志前缀 [2022-11-27T12:36:00.213454+08:00] routine[5]
 func LogFormat(routine int, format string, a ...any) string {
 	tpl := "[%s] routine[%d] " + format
-	sr := []any{time.Now().Format(time.RFC3339Nano), routine}
+	sr := []any{
+		time.Now().Format(time.RFC3339Nano),
+		routine,
+	}
 	sr = append(sr, a...)
 	return fmt.Sprintf(tpl, sr...)
 }

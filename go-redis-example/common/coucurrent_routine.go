@@ -46,7 +46,8 @@ func (cInst *ConcurrentRoutine) Run(ctx context.Context, customParams interface{
 					Routine:               mRoutine,
 					ConcurrentEventLogger: cInst.concurrentEventLogger,
 					CustomParams:          mParams,
-				})
+				},
+			)
 		}(ctx, mRoutine, customParams)
 	}
 	wg.Wait()
